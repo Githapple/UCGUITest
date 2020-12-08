@@ -3,12 +3,18 @@ project(ucGui VERSION 0.1.0)
 
 include(CTest)
 enable_testing()
+include_directories(
+    ${CMAKE_CURRENT_SOURCE_DIR}/GUI/Core 
+    ${CMAKE_CURRENT_SOURCE_DIR}/Config
+    ${CMAKE_CURRENT_SOURCE_DIR}/GUI/WM
+    ${CMAKE_CURRENT_SOURCE_DIR}/GUI/Widget
+                    )
 
-file(GLOB_RECURSE ./GUI *.c)
-# file(GLOB_RECURSE HDRS *.h)
+file(GLOB_RECURSE   DIR_SRCS  GUI/*.c)
+MESSAGE( STATUS "this var = ${CMAKE_CURRENT_SOURCE_DIR}")
 
-MESSAGE( STATUS "this var key = ${GLOB_RECURSE}")
-add_library(ucGui ucGui.cpp)
+#
+add_library(ucGui SHARED  ${DIR_SRCS})
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
