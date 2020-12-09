@@ -1,0 +1,63 @@
+/*
+ * @Author       : Aloys Zhang
+ * @Date         : 2020-12-09 13:13:59
+ * @LastEditors  : Aloys Zhang
+ * @LastEditTime : 2020-12-09 13:14:31
+ * @FilePath     : /UCGUITest/GUI/Core/GUI_X_Linux.c
+ */
+
+pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
+
+void GUI_X_ExecIdle(void)
+{
+       usleep(1000);
+       return;
+}
+
+
+nt GUI_X_GetTime(void)
+{
+       struct timeval tv;
+        int tm;
+        gettimeofday(&tv, NULL);
+        tm = tv.tv_sec*1024 + tv.tv_usec/1024;
+   
+
+       return tm;
+}
+
+
+void GUI_X_Delay(int Period)
+{
+       while(Period--)
+      {
+               usleep(1000);
+       }
+       return;
+}
+
+
+void GUI_X_Unlock(void)
+{
+        pthread_mutex_unlock(&mutex);
+        return;
+}
+void GUI_X_Lock(void)
+{
+       pthread_mutex_lock(&mutex); 
+       return;
+}
+U32 GUI_X_GetTaskId(void)
+{
+       pthread_t id;
+
+       id = pthread_self();
+       printf("GUI_X_GetTaskId %d \n", (U32)id);
+       return ((U32)id);
+}
+void GUI_X_InitOS(void)
+{
+       printf("GUI_X_InitOS\n");
+       GUI_MOUSE_DRIVER_PS2_Init();                              /* create read mouse thread for linux */
+       return;
+}

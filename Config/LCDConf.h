@@ -6,7 +6,7 @@
 *                       (c) Copyright 2002, Micrium Inc., Weston, FL
 *                       (c) Copyright 2002, SEGGER Microcontroller Systeme GmbH
 *
-*              µC/GUI is protected by international copyright laws. Knowledge of the
+*              ï¿½C/GUI is protected by international copyright laws. Knowledge of the
 *              source code may not be used to write a similar product. This file may
 *              only be used in accordance with a license and should not be redistributed
 *              in any way. We appreciate your understanding and fairness.
@@ -27,13 +27,17 @@ Purpose     : Sample configuration file
 **********************************************************************
 */
 
-#define LCD_XSIZE      (640)   /* X-resolution of LCD, Logical coor. */
-#define LCD_YSIZE      (480)   /* Y-resolution of LCD, Logical coor. */
+#define LCD_XSIZE      (480)   /* X-resolution of LCD, Logical coor. */
+#define LCD_YSIZE      (320)   /* Y-resolution of LCD, Logical coor. */
 
-#define LCD_BITSPERPIXEL (8)
-//#define LCD_BITSPERPIXEL (16)
+// #define LCD_BITSPERPIXEL (8)
+#define LCD_BITSPERPIXEL (24)    /* for linux */
 
-#define LCD_CONTROLLER 1375
+
+#define LCD_SWAP_RB (1)                                 /* for linux, actually 1555 format */
+#define LCD_FIXEDPALETTE (655)                    /* for linux, actually 1555 format */                  
+
+#define LCD_CONTROLLER -1               /* for linux */
 
 /*********************************************************************
 *
